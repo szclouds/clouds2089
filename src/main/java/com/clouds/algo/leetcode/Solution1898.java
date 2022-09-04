@@ -23,8 +23,8 @@ public class Solution1898 {
         while (low <= high) {
             int mid = low + (high - low) / 2;
             String str = getStr(s, removable, mid);
-            if (checksSubsequence(str, p)) {
-                if (mid + 1 == removable.length || !checksSubsequence(getStr(s, removable, mid + 1), p)) {
+            if (checkSubsequence(str, p)) {
+                if (mid + 1 == removable.length || !checkSubsequence(getStr(s, removable, mid + 1), p)) {
                     return mid + 1;
                 } else {
                     low = mid + 1;
@@ -52,15 +52,25 @@ public class Solution1898 {
         return sb.toString();
     }
 
-    private boolean checksSubsequence(String t, String s) {
-        int n = s.length(), m = t.length();
-        int i = 0, j = 0;
-        while (i < n && j < m) {
-            if (s.charAt(i) == t.charAt(j)) {
-                i++;
+    public boolean checkSubsequence(String t, String s) {
+        // t字符串长度
+        int m = t.length();
+        // s字符串长度
+        int n = s.length();
+        // 双指针 i j
+        int i = 0;
+        int j = 0;
+        // 循环遍历t和s，当其中一个字符串遍历完成后则停止
+        while (i < m && j < n) {
+            // 比较字符
+            if (s.charAt(j) == t.charAt(i)) {
+                // s字符串只有当匹配后才前进
+                j++;
             }
-            j++;
+            // t字符串始终往前进
+            i++;
         }
-        return i == n;
+        // 判断s字符串是否完成匹配完成
+        return j == n;
     }
 }

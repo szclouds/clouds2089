@@ -1,6 +1,7 @@
 package com.clouds.algo.leetcode;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -15,6 +16,13 @@ class Solution1898Test {
         assertEquals(2, solution1898.maximumRemovals("abcacb", "ab", new int[]{3, 1, 0}));
         assertEquals(1, solution1898.maximumRemovals("abcbddddd", "abcd", new int[]{3, 2, 1, 4, 5, 6}));
         assertEquals(0, solution1898.maximumRemovals("abcab", "abc", new int[]{0, 1, 2, 3, 4}));
-        assertEquals(2, solution1898.maximumRemovals("qlevcvgzfpryiqlwy", "qlecfqlw", new int[]{12,5}));
+        assertEquals(2, solution1898.maximumRemovals("qlevcvgzfpryiqlwy", "qlecfqlw", new int[]{12, 5}));
+    }
+
+    @Test
+    void checkSubsequence() {
+        Solution1898 solution1898 = new Solution1898();
+        assertTrue(solution1898.checkSubsequence("abcacb", "ab"));
+        assertTrue(solution1898.checkSubsequence("abccd", "bcd"));
     }
 }
