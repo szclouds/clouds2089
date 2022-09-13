@@ -5,10 +5,13 @@ package com.clouds.algo.leetcode;
  * @version 1.0
  */
 public class Solution0303 {
-    private int[] nums;
+    private final int[] sums;
 
     public Solution0303(int[] nums) {
-        this.nums = nums;
+        this.sums = new int[nums.length + 1];
+        for (int i = 0; i < nums.length; i++) {
+            this.sums[i + 1] = sums[i] + nums[i];
+        }
     }
 
     /**
@@ -20,6 +23,6 @@ public class Solution0303 {
      * @link <a href="https://leetcode.cn/problems/range-sum-query-immutable/">...</a>
      */
     public int sumRange(int left, int right) {
-        return 0;
+        return this.sums[right + 1] - this.sums[left];
     }
 }
