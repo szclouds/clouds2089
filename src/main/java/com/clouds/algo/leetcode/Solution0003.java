@@ -25,7 +25,7 @@ public class Solution0003 {
         int left = 0;
         for (int i = 0; i < s.length(); i++) {
             if (windowsMap.containsKey(s.charAt(i))) {
-                left = Math.max(max, windowsMap.get(s.charAt(i)) + 1);
+                left = Math.max(left, windowsMap.get(s.charAt(i)) + 1);
             }
             windowsMap.put(s.charAt(i), i);
             max = Math.max(max, i - left + 1);
