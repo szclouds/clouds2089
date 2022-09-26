@@ -32,4 +32,27 @@ public class Solution0003 {
         }
         return max;
     }
+
+    public int lengthOfLongestSubstring2(String s) {
+        if (s.length() < 2) {
+            return s.length();
+        }
+        Map<Character, Integer> windowsMap = new HashMap<>();
+        int max = Integer.MIN_VALUE;
+        int left = 0;
+        int right = 0;
+        while (right < s.length()) {
+            Character curr = s.charAt(right);
+            int currCount = windowsMap.get(curr) != null ? windowsMap.get(curr) : 0;
+            windowsMap.put(s.charAt(right), currCount + 1);
+            right++;
+            while (windowsMap.get(curr) > 1) {
+                int leftCount = windowsMap.get(s.charAt(left));
+                windowsMap.put(s.charAt(left), leftCount - 1);
+                left++;
+            }
+            max = Math.max(max, right - left);
+        }
+        return max;
+    }
 }
