@@ -19,6 +19,27 @@ public class Solution0066 {
      * @link <a href="https://leetcode.cn/problems/plus-one">...</a>
      */
     public int[] plusOne(int[] digits) {
-        return new int[0];
+        int add = 0;
+        for (int i = digits.length - 1; i >= 0; i--) {
+            if (i == digits.length - 1) {
+                add += 1;
+            }
+            int temp = (digits[i] + add) / 10;
+            digits[i] = (digits[i] + add) % 10;
+            add = temp;
+            if (temp == 0) {
+                break;
+            }
+        }
+        if (digits[0] == 0) {
+            int[] ret = new int[digits.length + 1];
+            ret[0] = add;
+            ret[1] = digits[0];
+            for (int i = 2; i < ret.length; i++) {
+                ret[i] = digits[i - 2];
+            }
+            return ret;
+        }
+        return digits;
     }
 }
