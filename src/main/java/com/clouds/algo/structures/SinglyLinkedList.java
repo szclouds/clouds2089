@@ -11,12 +11,12 @@ public class SinglyLinkedList {
     private Node head;
     private int size;
 
-    SinglyLinkedList() {
+    public SinglyLinkedList() {
         this.head = null;
         this.size = 0;
     }
 
-    SinglyLinkedList(Node node, int size) {
+    public SinglyLinkedList(Node node, int size) {
         this.head = node;
         this.size = size;
     }
@@ -264,20 +264,5 @@ public class SinglyLinkedList {
             System.out.print(dummyNode.val + " ");
             dummyNode = dummyNode.next;
         }
-    }
-}
-
-
-class Node {
-    int val;
-    Node next;
-
-    Node(int val) {
-        this(val, null);
-    }
-
-    Node(int val, Node next) {
-        this.val = val;
-        this.next = next;
     }
 }
