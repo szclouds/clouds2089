@@ -10,6 +10,13 @@ import java.util.Stack;
  */
 public class Solution0020 {
 
+    /**
+     * 有效括号
+     *
+     * @param s 给定字符串
+     * @return 给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串 s ，判断字符串是否有效。
+     * @link <a href="https://leetcode.cn/problems/valid-parentheses/description/">...</a>
+     */
     public boolean isValid(String s) {
         if (s.length() % 2 != 0) {
             return false;
