@@ -15,9 +15,23 @@ public class ArrayQueue {
         this.count = capacity;
     }
 
+    /**
+     * 支持数据迁移的入队操作
+     * 当tail到数组最大值时，且head不等于0时进行数据迁移，同时更新tail和head
+     *
+     * @param value 入队值
+     * @return 入队结果 true-成功，false-失败
+     */
     public boolean enQueue(String value) {
         if (tail == count) {
-            return false;
+            if (head == 0) {
+                return false;
+            }
+            for (int i = head; i < tail; i++) {
+                items[i - head] = items[i];
+            }
+            head = 0;
+            tail = tail - head;
         }
         items[tail] = value;
         tail++;
