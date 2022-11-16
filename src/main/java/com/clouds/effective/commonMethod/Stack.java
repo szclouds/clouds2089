@@ -40,6 +40,8 @@ public class Stack {
     public Stack clone() {
         try {
             Stack result = (Stack) super.clone();
+            // 需要特殊处理 避免elements被其他人操作而修改其内容，导致不可预测的安全性问题
+            // 数组的复制使用clone方法
             result.elements = elements.clone();
             return result;
         } catch (CloneNotSupportedException e) {

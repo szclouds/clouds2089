@@ -68,4 +68,13 @@ public class PhoneNumber {
         //}
         //return result;
     }
+
+    @Override
+    public String toString() {
+        return "PhoneNumber{" +
+                "areaCode=" + areaCode +
+                ", prefix=" + prefix +
+                ", lineNum=" + lineNum +
+                '}';
+    }
 }
