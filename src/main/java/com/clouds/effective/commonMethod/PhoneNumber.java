@@ -1,11 +1,18 @@
 package com.clouds.effective.commonMethod;
 
+import java.util.Comparator;
+import static java.util.Comparator.comparingInt;
+
 /**
  * @author clouds
  * @version 1.0
  */
-public class PhoneNumber {
+public class PhoneNumber implements Comparable<PhoneNumber> {
     private final short areaCode, prefix, lineNum;
+    // 基于lambada表达式进行比较-推荐
+    private static final Comparator<PhoneNumber> COMPARATOR = comparingInt((PhoneNumber pn) -> pn.areaCode)
+            .thenComparing(pn -> pn.prefix)
+            .thenComparing(pn -> pn.lineNum);
 
     public PhoneNumber(short areaCode, short prefix, short lineNum) {
         this.areaCode = areaCode;
@@ -76,5 +83,29 @@ public class PhoneNumber {
                 ", prefix=" + prefix +
                 ", lineNum=" + lineNum +
                 '}';
+    }
+
+    /**
+     * 实现对象比较
+     *
+     * @param o the object to be compared.
+     * @return int -1｜0｜1
+     */
+    //@Override
+    //public int compareTo(PhoneNumber o) {
+    //    int result = Short.compare(this.areaCode, o.areaCode);
+    //    if (result == 0) {
+    //        result = Short.compare(this.prefix, o.prefix);
+    //        if (result == 0) {
+    //            result = Short.compare(this.lineNum, o.lineNum);
+    //        }
+    //    }
+    //    return result;
+    //}
+
+
+    @Override
+    public int compareTo(PhoneNumber pn) {
+        return COMPARATOR.compare(this, pn);
     }
 }
