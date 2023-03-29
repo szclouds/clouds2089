@@ -20,11 +20,11 @@ public class CustomEventBus {
     private ObserverRegistry observerRegistry;
 
     @Resource
-    private CustomEventOberver customEventTest;
+    private CustomEventOberver customEventOberver;
 
     @PostConstruct
     private void init() {
-        observerRegistry.register(customEventTest);
+        observerRegistry.register(customEventOberver);
     }
 
     public CustomEventBus() {
